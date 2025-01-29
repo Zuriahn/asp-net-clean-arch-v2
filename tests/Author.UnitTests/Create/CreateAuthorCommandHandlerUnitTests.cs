@@ -25,7 +25,7 @@ namespace UnitTests.Author.Create
         {
             //Arrange
             // Se configura los parametros de entrada de nuestra prueba unitaria.
-            CreateAuthorCommand command = new CreateAuthorCommand("Fernando", "33049439443", "", "", "", 0, "");
+            CreateAuthorCommand command = new CreateAuthorCommand("Fernando", "", "MX", "Nuevo Leon", "Dalias", 105, "66635");
             //Act
             // Se ejecuta el metodo a probar de nuestra prueba unitaria
             var result = await _handler.Handle(command, default);

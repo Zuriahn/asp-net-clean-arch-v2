@@ -1,16 +1,14 @@
 using System.Diagnostics;
-using ErrorOr;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Web.API.Common.Errors
 {
-    public class ClArchBooksProblemDetailsFactor : ProblemDetailsFactory
+    public class SlnProjectProblemDetailsFactory : ProblemDetailsFactory
     {
         private readonly ApiBehaviorOptions _options;
 
-        public ClArchBooksProblemDetailsFactor(ApiBehaviorOptions options)
+        public SlnProjectProblemDetailsFactory(ApiBehaviorOptions options)
         {
             _options = options ?? throw new ArgumentNullException(nameof(options));
         }
