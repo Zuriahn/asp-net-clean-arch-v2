@@ -22,15 +22,14 @@ namespace Application.Authors.Commands
                 return Errors.Author.PhoneNumberWithBadFormat;
             }
             
-            var valAddress = new Address(command.address.country, command.address.state, command.address.street, command.address.number, command.address.zipcode).ToString();
-            if (Address.Create(valAddress) is not Address address)
+            if (Address.Create(command.country, command.state, command.street, command.number, command.zipcode) is not Address address)
             {
                 return Errors.Author.AddressWithBadFormat;
             }
 
             var author = new Author(new AuthorId(Guid.NewGuid()), command.name, address, phoneNumber);
 
-            await _authorRepository.Add(author);
+            _authorRepository.Add(author);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 

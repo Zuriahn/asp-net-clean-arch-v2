@@ -17,12 +17,21 @@ namespace Domain.ValueObjects
         public int Number { get; init; }
         public string Zipcode { get; init; }
 
-        public static Address? Create(string value)
+        public static Address? Create(string country, string state, string street, int number, string zipcode)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (
+            string.IsNullOrWhiteSpace(country)
+            ||
+            string.IsNullOrWhiteSpace(state)
+            ||
+            string.IsNullOrWhiteSpace(street)
+            ||
+            number <= 0
+            || string.IsNullOrWhiteSpace(zipcode))
+            {
                 return null;
-            var splitAddress = value.Split(",");
-            return new Address(splitAddress[0], splitAddress[1], splitAddress[2], int.Parse(splitAddress[3]), splitAddress[4]);
+            }
+            return new Address(country, state, street, number, zipcode);
         }
 
         public override string ToString() => $"{Country}, {State}, {Street}, {Number}, {Zipcode}";

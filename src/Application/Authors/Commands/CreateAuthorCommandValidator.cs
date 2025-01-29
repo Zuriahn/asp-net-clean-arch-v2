@@ -13,26 +13,26 @@ namespace Application.Authors.Commands
                  .MaximumLength(13)
                  .WithName("Phone Number");
 
-            RuleFor(r => r.address.country)
+            RuleFor(r => r.country)
                 .NotEmpty()
                 .MaximumLength(3);
 
-            RuleFor(r => r.address.state)
+            RuleFor(r => r.state)
                 .NotEmpty()
                 .MaximumLength(20)
                 .WithName("State");
 
-            RuleFor(r => r.address.street)
+            RuleFor(r => r.street)
                 .MaximumLength(20)
                 .WithName("Street");
 
-            RuleFor(r => r.address.number)
+            RuleFor(r => r.number)
                 .NotNull();
 
-            RuleFor(r => r.address.zipcode)
+            RuleFor(r => r.zipcode)
                 .NotEmpty()
                 .MaximumLength(10)
-                .WithName("Zip Code");
+                .WithName("Zipcode");
         }
     }
 }

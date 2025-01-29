@@ -8,8 +8,8 @@ namespace Domain.Repository
 
         Task<Author?> GetByIdAsync(AuthorId id);
 
-        Task Add(Author author);
-        Task Update(Author author);
-        Task Delete(Author author);
+        void Add(Author author);
+        void Update(Author author);
+        void Delete(Author author);
     }
 }

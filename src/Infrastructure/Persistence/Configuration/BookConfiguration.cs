@@ -21,6 +21,10 @@ namespace Infrastructure.Persistence.WriteConfiguration
 
             builder.Property(c => c.Description).HasMaxLength(500);
 
+            builder.HasOne<Author>()
+                .WithMany()
+                .HasForeignKey("AuthorId");
+
         }
     }
 
