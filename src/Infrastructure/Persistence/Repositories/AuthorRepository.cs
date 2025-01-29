@@ -15,7 +15,6 @@ namespace Infrastructure.Persistence.Repositories
         public void Add(Author author) => _context.Authors.AddAsync(author);
         public void Delete(Author author) => _context.Authors.Remove(author);
         public void Update(Author author) => _context.Authors.Update(author);
-        // public async Task<bool> ExistsAsync(AuthorId id) => await _authors.AnyAsync(author => author.Id == id);
         public async Task<Author?> GetByIdAsync(AuthorId id) => await _context.Authors.SingleOrDefaultAsync(c => c.Id == id);
         public async Task<List<Author>> GetAllAsync() => await _context.Authors.ToListAsync();
     }

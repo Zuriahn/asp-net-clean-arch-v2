@@ -1,8 +1,10 @@
 using Application.Data;
+using Application.Services;
 using Domain.Primitives;
 using Domain.Repository;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
+using Infrastructure.Persistence.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,6 +29,8 @@ namespace Infrastructure
                     sp.GetRequiredService<ApplicationDbContext>());
             services.AddScoped<IUnitOfWork>(sp =>
                     sp.GetRequiredService<ApplicationDbContext>());
+
+            services.AddSingleton<IWeatherService, WeatherService>();
 
             return services;
         }
