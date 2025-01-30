@@ -23,8 +23,7 @@ namespace Infrastructure.Persistence.WriteConfiguration
 
             builder.HasOne<Author>()
                 .WithMany()
-                .HasForeignKey("AuthorId");
-
+                .HasForeignKey(b => b.AuthorId);
         }
     }
 

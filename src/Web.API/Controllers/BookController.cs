@@ -1,14 +1,14 @@
-using Application.Authors.Queries;
-using Application.Authors.Commands;
+using Application.Books.Queries;
+using Application.Books.Commands;
 
 namespace Web.API.Controllers
 {
-    [Route("Authors")]
-    public class Authors : ApiController
+    [Route("Books")]
+    public class Books : ApiController
     {
         private readonly ISender _mediator;
 
-        public Authors(ISender mediator)
+        public Books(ISender mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
@@ -16,21 +16,21 @@ namespace Web.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetAllAuthorsQuery());
+            var result = await _mediator.Send(new GetAllBooksQuery());
 
             return result.Match(
-                authors => Ok(authors),
+                books => Ok(books),
                 errors => Problem(errors)
             );
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateAuthorCommand command)
+        public async Task<IActionResult> Create([FromBody] CreateBookCommand command)
         {
             var result = await _mediator.Send(command);
 
             return result.Match(
-                authorId => Ok(authorId),
+                bookId => Ok(bookId),
                 errors => Problem(errors)
             );
         }

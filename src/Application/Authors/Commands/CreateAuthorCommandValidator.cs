@@ -1,8 +1,8 @@
 namespace Application.Authors.Commands
 {
-    public class CreateCustomerCommandValidator : AbstractValidator<CreateAuthorCommand>
+    public class CreateAuthorCommandValidator : AbstractValidator<CreateAuthorCommand>
     {
-        public CreateCustomerCommandValidator()
+        public CreateAuthorCommandValidator()
         {
             RuleFor(r => r.name)
                 .NotEmpty()
