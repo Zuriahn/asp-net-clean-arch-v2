@@ -30,7 +30,7 @@ namespace Infrastructure
             services.AddScoped<IUnitOfWork>(sp =>
                     sp.GetRequiredService<ApplicationDbContext>());
 
-            services.AddSingleton<IWeatherService, WeatherService>();
+            services.AddHttpClient<IWeatherService, WeatherService>();
 
             return services;
         }
