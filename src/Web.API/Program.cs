@@ -38,9 +38,11 @@ app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseCors("AllowAll");
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.UseMiddleware<GloblalExceptionHandlingMiddleware>();
 

@@ -1,9 +1,11 @@
 using Application.Books.Queries;
 using Application.Books.Commands;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Controllers
 {
     [Route("Books")]
+    [Authorize]
     public class Books : ApiController
     {
         private readonly ISender _mediator;

@@ -13,6 +13,8 @@ namespace Infrastructure.Persistence.WriteConfiguration
 
             builder.HasKey(c => c.Id);
 
+            builder.HasIndex(b => b.Title).IsUnique();
+
             builder.Property(c => c.Id).HasConversion(
                 bookId => bookId.Value,
                 value => new BookId(value));

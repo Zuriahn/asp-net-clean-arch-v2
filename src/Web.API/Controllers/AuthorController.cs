@@ -1,9 +1,11 @@
 using Application.Authors.Queries;
 using Application.Authors.Commands;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Controllers
 {
     [Route("Authors")]
+    [Authorize]
     public class Authors : ApiController
     {
         private readonly ISender _mediator;

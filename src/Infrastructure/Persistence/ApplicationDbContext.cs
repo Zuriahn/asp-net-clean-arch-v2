@@ -8,17 +8,18 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
 {
     private readonly IPublisher _publisher;
 
-    public ApplicationDbContext(DbContextOptions options, IPublisher publisher) : base (options)
+    public ApplicationDbContext(DbContextOptions options, IPublisher publisher) : base(options)
     {
         _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
     }
 
     public DbSet<Author> Authors { get; set; }
     public DbSet<Book> Books { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-       modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

@@ -19,7 +19,7 @@ namespace Domain.Entities
 
         public AuthorId Id { get; private set; }
 
-        public string Name { get; private set; } = string.Empty;
+        public string Name { get; private set; }
 
         public Address Address { get; private set; }
 

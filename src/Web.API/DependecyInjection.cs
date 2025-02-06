@@ -1,3 +1,4 @@
+using Web.API.Extensions;
 using Web.API.Middlewares;
 
 namespace Web.API
@@ -8,7 +9,7 @@ namespace Web.API
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGenWithAuth();
             services.AddTransient<GloblalExceptionHandlingMiddleware>();
             return services;
         }
