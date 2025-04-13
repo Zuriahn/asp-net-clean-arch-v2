@@ -1,0 +1,20 @@
+dotnet ef migrations add Init_Migrations --context WriteDbContext -p src/Infrastructure -s src/Web.API -o Persistence/Migrations 
+dotnet ef database update --context ReadDbContext -p src/Infrastructure -s src/Web.API
+
+
+
+dotnet ef migrations add Init_Migrations -p src/Infrastructure -s src/Web.API -o Persistence/Migrations
+
+dotnet ef database update -p src/Infrastructure -s src/Web.API
+
+dotnet ef migrations add User_Entity -p src/Infrastructure -s src/Web.API -o Persistence/Migrations
+
+
+dotnet sln clarchbooks.sln add tests/Author.UnitTests/Author.UnitTests.csproj
+
+dotnet new classlib -n Author.UnitTests
+
+
+dotnet buid
+
+dotnet run --project src/Web.API

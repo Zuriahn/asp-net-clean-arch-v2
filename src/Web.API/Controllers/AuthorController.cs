@@ -16,6 +16,7 @@ namespace Web.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllAuthorsQuery());
@@ -27,12 +28,37 @@ namespace Web.API.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] CreateAuthorCommand command)
         {
             var result = await _mediator.Send(command);
 
             return result.Match(
                 authorId => Ok(authorId),
+                errors => Problem(errors)
+            );
+        }
+
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<IActionResult> Update([FromBody] UpdateAuthorCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            return result.Match(
+                authorId => NoContent(),
+                errors => Problem(errors)
+            );
+        }
+
+        [HttpDelete("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _mediator.Send(new DeleteAuthorCommand(id));
+
+            return result.Match(
+                authorId => NoContent(),
                 errors => Problem(errors)
             );
         }

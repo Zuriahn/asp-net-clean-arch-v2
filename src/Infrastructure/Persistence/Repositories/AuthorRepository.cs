@@ -17,5 +17,6 @@ namespace Infrastructure.Persistence.Repositories
         public void Update(Author author) => _context.Authors.Update(author);
         public async Task<Author?> GetByIdAsync(AuthorId id) => await _context.Authors.SingleOrDefaultAsync(c => c.Id == id);
         public async Task<List<Author>> GetAllAsync() => await _context.Authors.ToListAsync();
+        public async Task<bool> ExistsAsync(AuthorId id) => await _context.Authors.AnyAsync(author => author.Id == id);
     }
 }
